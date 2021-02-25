@@ -9,9 +9,8 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   public listaUsuarios: any = [];
-  public pagina = 1;
+  public pagina = 0;
   public totalPaginas = 1;
-
 
   constructor(private userService: UserService) {}
 
@@ -31,11 +30,15 @@ export class HomePage {
     
     this.userService.buscarTodos(pagina).subscribe(dados => {
       
-      this.listaUsuarios = dados['data'];
+      this.listaUsuarios = dados['results'];
       
-      this.totalPaginas = dados['total_pages'];
+      this.totalPaginas = 1;
 
-      console.log("Lista: ", this.listaUsuarios);
+      
+
+      //console.log("Lista: ", this.listaUsuarios);
+      console.log("Lista: ", this.listaUsuarios[0]);
+
     });
 
   } 

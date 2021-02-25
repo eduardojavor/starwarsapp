@@ -1,28 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
-    <ion-title>
-      Usuários
+    <ion-title size="large">
+       
     </ion-title>
+
+    
+      <img src="../assets/image/imgsw.png" alt="Picture">
+    
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <ion-item *ngFor="let user of listaUsuarios" [routerLink]="'/exibir-usuario/' + user.id"> 
+  <ion-item *ngFor="let user of listaUsuarios" [routerLink]="'/exibir-usuario/' + user.title"> 
 
-    <ion-thumbnail slot="start">
-      <img [src]="user.avatar" alt="Foto">
-    </ion-thumbnail>
 
+
+
+
+    
     <div>
-      <h4>{{user.first_name + ' ' + user.last_name}}</h4>
-      <p>{{user.email}}</p>
+      <h4>{{user.title}}</h4>
+      <p>{{user.release_date}}</p>
     </div>
 
 
 
   <ion-badge color="dark" slot="end">  
-    ID: {{user.id}}
+    Episode: {{user.episode_id}}
   </ion-badge>  
 
   </ion-item>
@@ -39,7 +45,7 @@
         <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    Página: {{pagina}}
+    Page: {{pagina}}
     <ion-buttons slot="end" *ngIf="pagina < totalPaginas">
       <ion-button (click)="buscarUsuarios(pagina + 1)">
         <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>

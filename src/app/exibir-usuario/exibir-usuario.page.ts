@@ -9,8 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ExibirUsuarioPage implements OnInit {
 
-  public id = 0;
+  public id = 1;
   public user: any = {};
+  
 
   constructor(
     private userService: UserService, 
@@ -19,13 +20,26 @@ export class ExibirUsuarioPage implements OnInit {
 
   ngOnInit() {
 
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.buscarId(this.id).subscribe(dados =>{
-
-      this.user = dados['data'];
-      console.log(this.user);
-
-    })
+    this.buscarUsuario(this.id);
+    
   }
+
+  public buscarUsuario(id: number){
+
+
+    this.id = id;
+    
+    this.userService.buscarId(id).subscribe(dados => {
+      
+      this.user = dados;
+
+      console.log("User: ", this.user);
+    });
+
+  }
+
+
+
+
 
 }

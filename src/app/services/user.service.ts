@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  private url = 'https://reqres.in/api/users';
+  private url = 'https://swapi.dev/api/films/';
 
   constructor(private http:HttpClient) { }
 
@@ -25,7 +25,7 @@ export class UserService {
 
   public buscarId(id: number) {
 
-    return this.http.get(`${this.url}/${id}`);
+    return this.http.get(`${this.url}${id}/`);
 
   }
 
